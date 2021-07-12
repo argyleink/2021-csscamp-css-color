@@ -293,3 +293,13 @@ code-gallery {
     transform: translateZ(6px) translateY(75px);
   }
 }
+
+@supports (-webkit-hyphens:none) {
+  h2.lg-codeblock-adjust {
+    transform: translateZ(0) translateY(0);
+  }
+
+  h2.xl-codeblock-adjust {
+    transform: translateZ(0) translateY(0);
+  }
+}
