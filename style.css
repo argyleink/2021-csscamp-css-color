@@ -1,1 +1,295 @@
 @import 'slyd/dist/slyd.css';
+@import 'slyd/app/slyd/index.css';
+
+:root {
+  --neon-red: #D30302;
+  --neon-pink: #e10361;
+  --neon-purple: #4003e6;
+  --neon-blue: #00a3d5;
+  --neon-green: #02c435;
+  --neon-yellow: #b48505;
+  --neon-white: #fff;
+}
+
+.neon-red {
+  --neon: #FF5161;
+  --neon-glow: #D30302;
+}
+
+.neon-pink {
+  --neon: #FF53cd;
+  --neon-glow: #e10361;
+}
+
+.neon-purple {
+  --neon: #9461fd;
+  --neon-glow: #4003e6;
+}
+
+.neon-blue {
+  --neon: #2dd9fe;
+  --neon-glow: #00a3d5;
+}
+
+.neon-green {
+  --neon: #00fe9b;
+  --neon-glow: #02c435;
+}
+
+.neon-yellow {
+  --neon: #ffdb4e;
+  --neon-glow: #b48505;
+}
+
+.neon-white {
+  --neon: #fff;
+  --neon-glow: #ffffff;
+}
+
+@media (dynamic-range: high) {
+  :root {
+    --neon-red: color(display-p3 1 0 0);
+    --neon-pink: color(display-p3 1 0 1);
+    --neon-purple: color(display-p3 0 0 1);
+    --neon-blue: color(display-p3 0 1 1);
+    --neon-green: color(display-p3 0 1 0);
+    --neon-yellow: color(display-p3 1 1 0);
+    --neon-white: color(display-p3 1 1 1);
+  }
+
+  .neon-red {
+    --neon-glow: color(display-p3 1 0 0);
+  }
+
+  .neon-pink {
+    --neon-glow: color(display-p3 1 0 1);
+  }
+
+  .neon-purple {
+    --neon-glow: color(display-p3 0 0 1);
+  }
+
+  .neon-blue {
+    --neon-glow: color(display-p3 0 1 1);
+  }
+
+  .neon-green {
+    --neon-glow: color(display-p3 0 1 0);
+  }
+
+  .neon-yellow {
+    --neon-glow: color(display-p3 1 1 0);
+  }
+
+  .neon-white {
+    --neon-glow: color(display-p3 1 1 1);
+  }
+
+  :is(h1,h2) :is(a,b) {
+    display: inline-block;
+    /* text-shadow: 0 0 .5em var(--neon-glow); */
+  }
+}
+
+p > a {
+  display: inline;
+}
+
+a, b {
+  color: var(--neon, var(--brand-color-2), hotpink);
+  text-shadow: 0 0 .5em var(--neon-glow);
+}
+
+small > a {
+  font-size: max(60%, 3vmin);
+}
+
+a::first-letter {
+  text-transform: uppercase;
+}
+
+small {
+  display: inline-flex;
+  align-items: center;
+  gap: 1ch;
+}
+
+video, img, picture {
+  border-radius: .3em;
+  max-block-size: 680px;
+  max-block-size: 100%;
+  max-inline-size: 100%;
+
+  @media (orientation: portrait) { & {
+    block-size: auto !important;
+  }}
+}
+
+dl {
+  font-size: .5em;
+  text-align: start;
+  display: grid;
+  gap: 15vmin;
+  grid-template-columns: repeat(3, 1fr);
+
+  & dt {
+    font-size: 1.5em;
+    font-weight: bolder;
+  }
+
+  & dd > a::first-letter {
+    text-transform: none;
+  }
+
+  & a {
+    transform: none;
+  }
+}
+
+[flipped] {
+  display: inline-block;
+  transform: rotateY(.5turn);
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  text-align: left;
+  font-size: clamp(.8rem, 1.5rem, 3vmin);
+
+  @media (max-width: 640px) { & {
+    font-size: 16px;
+    transform: translateZ(-15px);
+  }}
+
+  @media (orientation: portrait) { & {
+    font-size: 2.5vmin;
+  }}
+
+  @media (width >= 480px) { & {
+    font-size: clamp(1rem, 2rem, 4vmin);
+  }}
+
+  @media (width >= 2000px) { & {
+    font-size: max(48px, 4vmin);
+  }}
+}
+
+.token.atrule, 
+.token.attr-value {
+  color: hsl(120 61% 70%);
+}
+
+.token.atrule {
+  color: var(--brand-color-2);
+}
+
+.token.atrule > .token:first-of-type {
+  color: white;
+  text-shadow: 0 0 .5em white;
+  display: inline-block;
+
+  /* &::first-letter {
+    color: hsl(120 40% 75%);
+    text-shadow: 0 0 .5em #02c435;
+  } */
+}
+
+.token.function {
+  color: var(--brand-color-3);
+  text-shadow: 0 0 .5em #4003e6;
+}
+
+.token.url {
+  color: var(--text-1);
+}
+
+pre[class*="language-"] {
+  box-shadow:
+    0 10px 25px -10px hsl(0 0% 0% / 50%);
+}
+
+.wavy {
+  text-decoration-style: wavy;
+}
+
+.browser {
+  max-block-size: 1em;
+}
+
+.conic {
+  border-radius: 45px;
+}
+
+.risky {
+  border-radius: 20vw;
+  padding: .5ch 2ch;
+  border: 1px solid var(--neon);
+}
+
+.with-avatar {
+  display: inline-flex;
+  place-items: center;
+  gap: .5ch;
+
+  & > img {
+    max-block-size: 1.5em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+}
+
+li {
+  gap: .5ch;
+}
+
+[spelling-error] {
+  text-decoration: wavy underline var(--neon-red);
+}
+
+slyds > slyd:after, slyds > slyd-group:not(:last-child) > slyd:last-child:after {
+  font-size: max(2vmax, 32px);
+}
+
+code-gallery {
+  --space: 5vmin;
+  display: flex;
+  align-items: center;
+  gap: var(--space);
+  overflow: scroll hidden;
+  overscroll-behavior-x: contain;
+  max-inline-size: 94vw;
+  padding-inline-start: 5vmin;
+  padding-inline-end: 5vmin;
+  padding-block-end: 20px;
+  scroll-padding-inline-start: 5vmin;
+  scroll-padding-inline-end: 5vmin;
+  scroll-snap-type: x;
+
+  @media (orientation: portrait) { & {
+    transform: translateZ(0);
+  }}
+
+  & > * {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  & > picture {
+    transform: translateZ(0);
+  }
+}
+
+@media (orientation: portrait) and (max-width: 720px) {
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0 2vmax;
+  }
+}
+
+@media (min-width: 1024px) {
+  h2.lg-codeblock-adjust {
+    transform: translateZ(6px) translateY(50px);
+  }
+
+  h2.xl-codeblock-adjust {
+    transform: translateZ(6px) translateY(75px);
+  }
+}

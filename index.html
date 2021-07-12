@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>London CSS 2020 - Talk by Adam Argyle</title>
+    <title>2021 HD Color > CSS Camp < Talk by Adam Argyle</title>
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#111111">
-    <meta name="description" content="London CSS 2020 - Talk by Adam Argyle">
+    <meta name="theme-color" content="deeppink" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="Canvas" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="2021 HD Color > CSS Camp < Talk by Adam Argyle">
 
     <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-numbers/prism-line-numbers.min.css" as="style" onload="this.rel='stylesheet'">
     <link rel="preload" href="//unpkg.com/prism-themes@1.1.0/themes/prism-atom-dark.css" as="style" onload="this.rel='stylesheet'">
@@ -19,32 +20,182 @@
     
     <slyds>
 
-      <slyd>
-        <h1 uppercase>Slide 1</h1>
-        <h2>it's <span highlight>working</span> grrreat!</h2>
-      </slyd>
-
       <slyd-group>
 
         <slyd>
-          <h1>Slide 2a</h1>
-          <h2>subtitle</h2>
+          <h1 uppercase>CSS<b class="neon-blue"> </b><b class="neon-purple">Camp</b></h1>
+          <h2><span highlight>HD</span> CSS <b class="neon-pink">COLOR</b></h2>
         </slyd>
 
         <slyd>
-          <h1>Slide 2b</h1>
+          <h2>Problem #1</h2>
+          <p lead>Displays <b color="brand-3">progressed faster</b> than the CSS spec</p>
         </slyd>
-        
+
         <slyd>
-          <h1>Slide 2c</h1>
+          <h2>Problem #2</h2>
+          <p lead><b color="brand-2">Consumes more memory</b> to compute and display colors from newer color spaces, as such has been reserved for movies and images</p>
         </slyd>
-        
+
+        <slyd>
+          <h2>Problem #3</h2>
+          <p lead>The CSSOM must support <b color="brand-1">a JS API</b></p>
+        </slyd>
+
+        <slyd>
+          <h2>Problem #4</h2>
+          <p lead>Current color spaces don't offer <b color="brand-3">perceptual uniformity</b></p>
+        </slyd>
+
+        <slyd>
+          <h2>Where to play?</h2>
+          <ul>
+            <li>Safari</li>
+            <li>Safari Tech Preview 122+</li>
+            <li>Firefox Nightly</li>
+          </ul>
+        </slyd>
+
       </slyd-group>
 
-      <slyd>
-        <h1 uppercase>Slide 3</h1>
-        <h2>you're ready to go</h2>
-      </slyd>
+
+
+      <slyd-group>
+
+        <slyd id="high-risk">
+          <h1 uppercase>Color <b class="neon-blue">Level 4</b></h1>
+        </slyd>
+
+        <slyd id="color-4">
+          <code-gallery>
+            <pre class="language-css"><code>
+              #hex-with-alpha {
+                color: #0f08;
+                color: #00ff0088;
+              }
+            </code></pre>
+            <pre class="language-css"><code>
+              #functional-notation {
+                color: hsl(0deg 0% 0%);
+                color: hsl(2rad 50% 50% / 80%);
+                color: rgb(0 0 0);
+                color: rgb(255 255 255 / .25);
+              }
+            </code></pre>
+            <img src="https://pbs.twimg.com/media/EQKBCw6VUAIW6yP?format=jpg&name=large"/>
+            <pre class="language-css"><code>
+              #lab-and-lch {
+                --ux-gray: lch(50% 0 0);
+                --rad-pink: lch(50% 200 230);
+                --rad-pink: lab(150% 160 0);
+                --pale-purple: lab(75% 50 -50);
+              }
+            </code></pre>
+            <blockquote>
+              <h3 color="brand-2"><b>Device Independent Color</b></h3>
+              <p>Unlike CMYK, a device dependent color space, sRGB, LCH and lab are device independent spaces</p>
+            </blockquote>
+            <img src="/assets/lch-gradient.png"/>
+            <video 
+              style="height: 680px; width: auto;" 
+              src="/assets/color-picker.mp4" 
+              loop
+            ></video>
+            <img src="/assets/color-5-p3.png" alt="">
+            <pre class="language-css"><code>
+              #color-function {
+                --rad-pink: color(display-p3 1 0 1);
+                --rad-pink: color(lab 50% 150 -50);
+                --rad-pink: color(srgb 100% 0% 50%); 
+              }
+            </code></pre>
+            <spacer>&nbsp;</spacer>
+          </code-gallery>
+          <small>
+            <a class="neon-green" href="https://www.w3.org/TR/css-color-4/">Color 4 Spec</a>
+            | 
+            <a color="brand-2" href="https://caniuse.com/mdn-css_types_color_space_separated_functional_notation">browser support</a>
+          </small>
+        </slyd>
+
+        
+
+        <slyd id="hd-color">
+          <h2><b>HD</b> Color</h2>
+          <code-gallery>
+            <blockquote>
+              <h3 color="brand-2">Since 2017</h3>
+              <p>Safari shipped display-p3 4 years ago! Which offers ~50% more colors than sRGB.</p>
+            </blockquote>
+            <pre class="language-css"><code>
+              @media (dynamic-range: high) {
+                .neon-pink {
+                  --neon-glow: color(display-p3 1 0 1);
+                }
+              }
+            </code></pre>
+            <img src="/assets/color-5-p3.png" alt="">
+            <spacer>&nbsp;</spacer>
+          </code-gallery>
+          <small>
+            <a class="neon-green" href="https://www.w3.org/TR/mediaqueries-5/#dynamic-range">Dynamic Range Spec</a> | 
+            <a class="neon-pink" href="https://codepen.io/argyleink/pen/MWymQGj">Demo</a>
+          </small>
+        </slyd>
+
+      </slyd-group>
+
+      <slyd-group>
+
+        <slyd id="high-risk">
+          <h1 uppercase>Color <b class="neon-pink">Level 5</b></h1>
+        </slyd>
+
+        <slyd id="color-5">
+          <code-gallery>
+            <pre class="language-css"><code>
+              .color-mix {
+                --pink: color-mix(red, white);
+
+                --brand: #0af; 
+                --text1: color-mix(var(--brand) 25%, black);
+                --text2: color-mix(var(--brand) 40%, black);
+              }
+            </code></pre>
+            <video 
+              style="height: 680px; width: auto;" 
+              src="/assets/color-contrast.mp4" 
+              loop
+            ></video>
+            <pre class="language-css"><code>
+              /* picks black or white by default */
+              .always-passing-contrast {
+                color: color-contrast(var(--bg));
+              }
+            </code></pre>
+            <pre class="language-css"><code>
+              --text-on-bg-blue-1: color-contrast(
+                var(--bg-blue-1) 
+                vs 
+                var(--text-subdued), 
+                var(--text-light), 
+                var(--text-lightest) 
+                to AA /* 4.5 */
+              );
+            </code></pre>
+            <pre class="language-css"><code>
+              .relative-color {
+                --color: #0af;
+                --abs-change: lch(from var(--color) 75% c h);
+                --rel-change: lch(from var(--color) l calc(c/2) h);
+              }
+            </code></pre>
+            <spacer>&nbsp;</spacer>
+          </code-gallery>
+          <a class="neon-green" href="https://www.w3.org/TR/css-color-5">Color 5 Spec</a>
+        </slyd>
+
+      </slyd-group>
 
     </slyds>
 
